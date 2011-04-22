@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
+		ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3861361E9A4002F94A1 /* Foundation.framework */; };
+		ADAEF3891361E9A4002F94A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */; };
+		ADAEF38F1361E9A4002F94A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF38D1361E9A4002F94A1 /* InfoPlist.strings */; };
+		ADAEF3921361E9A4002F94A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF3911361E9A4002F94A1 /* main.m */; };
+		ADAEF3951361E9A4002F94A1 /* QuotifyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */; };
+		ADAEF3981361E9A4002F94A1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF3961361E9A4002F94A1 /* MainWindow.xib */; };
+		ADAEF39B1361E9A4002F94A1 /* QuotifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */; };
+		ADAEF39E1361E9A4002F94A1 /* QuotifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */; };
+		ADAEF3A51361E9A5002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
+		ADAEF3A61361E9A5002F94A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3861361E9A4002F94A1 /* Foundation.framework */; };
+		ADAEF3A71361E9A5002F94A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */; };
+		ADAEF3AF1361E9A5002F94A1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF3AD1361E9A5002F94A1 /* InfoPlist.strings */; };
+		ADAEF3B21361E9A5002F94A1 /* QuotifyTests.h in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF3B11361E9A5002F94A1 /* QuotifyTests.h */; };
+		ADAEF3B41361E9A5002F94A1 /* QuotifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF3B31361E9A5002F94A1 /* QuotifyTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADAEF3A81361E9A5002F94A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ADAEF3771361E9A4002F94A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ADAEF37F1361E9A4002F94A1;
+			remoteInfo = Quotify;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ADAEF3801361E9A4002F94A1 /* Quotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAEF3841361E9A4002F94A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		ADAEF3861361E9A4002F94A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		ADAEF38C1361E9A4002F94A1 /* Quotify-Info.plist */ = {isa = PBXFileReference; path = "Quotify-Info.plist"; sourceTree = "<group>"; };
+		ADAEF38E1361E9A4002F94A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ADAEF3901361E9A4002F94A1 /* Quotify-Prefix.pch */ = {isa = PBXFileReference; path = "Quotify-Prefix.pch"; sourceTree = "<group>"; };
+		ADAEF3911361E9A4002F94A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */ = {isa = PBXFileReference; path = QuotifyAppDelegate.h; sourceTree = "<group>"; };
+		ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuotifyAppDelegate.m; sourceTree = "<group>"; };
+		ADAEF3971361E9A4002F94A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */ = {isa = PBXFileReference; path = QuotifyViewController.h; sourceTree = "<group>"; };
+		ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuotifyViewController.m; sourceTree = "<group>"; };
+		ADAEF39D1361E9A4002F94A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/QuotifyViewController.xib; sourceTree = "<group>"; };
+		ADAEF3A41361E9A5002F94A1 /* QuotifyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuotifyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADAEF3AC1361E9A5002F94A1 /* QuotifyTests-Info.plist */ = {isa = PBXFileReference; path = "QuotifyTests-Info.plist"; sourceTree = "<group>"; };
+		ADAEF3AE1361E9A5002F94A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		ADAEF3B01361E9A5002F94A1 /* QuotifyTests-Prefix.pch */ = {isa = PBXFileReference; path = "QuotifyTests-Prefix.pch"; sourceTree = "<group>"; };
+		ADAEF3B11361E9A5002F94A1 /* QuotifyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuotifyTests.h; sourceTree = "<group>"; };
+		ADAEF3B31361E9A5002F94A1 /* QuotifyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuotifyTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ADAEF37D1361E9A4002F94A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */,
+				ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */,
+				ADAEF3891361E9A4002F94A1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADAEF3A01361E9A5002F94A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADAEF3A51361E9A5002F94A1 /* UIKit.framework in Frameworks */,
+				ADAEF3A61361E9A5002F94A1 /* Foundation.framework in Frameworks */,
+				ADAEF3A71361E9A5002F94A1 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ADAEF3751361E9A4002F94A1 = {
+			isa = PBXGroup;
+			children = (
+				ADAEF38A1361E9A4002F94A1 /* Quotify */,
+				ADAEF3AA1361E9A5002F94A1 /* QuotifyTests */,
+				ADAEF3831361E9A4002F94A1 /* Frameworks */,
+				ADAEF3811361E9A4002F94A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ADAEF3811361E9A4002F94A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEF3801361E9A4002F94A1 /* Quotify.app */,
+				ADAEF3A41361E9A5002F94A1 /* QuotifyTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ADAEF3831361E9A4002F94A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEF3841361E9A4002F94A1 /* UIKit.framework */,
+				ADAEF3861361E9A4002F94A1 /* Foundation.framework */,
+				ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADAEF38A1361E9A4002F94A1 /* Quotify */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */,
+				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
+				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
+				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
+				ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */,
+				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				ADAEF38B1361E9A4002F94A1 /* Supporting Files */,
+			);
+			path = Quotify;
+			sourceTree = "<group>";
+		};
+		ADAEF38B1361E9A4002F94A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEF38C1361E9A4002F94A1 /* Quotify-Info.plist */,
+				ADAEF38D1361E9A4002F94A1 /* InfoPlist.strings */,
+				ADAEF3901361E9A4002F94A1 /* Quotify-Prefix.pch */,
+				ADAEF3911361E9A4002F94A1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ADAEF3AA1361E9A5002F94A1 /* QuotifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEF3B11361E9A5002F94A1 /* QuotifyTests.h */,
+				ADAEF3B31361E9A5002F94A1 /* QuotifyTests.m */,
+				ADAEF3AB1361E9A5002F94A1 /* Supporting Files */,
+			);
+			path = QuotifyTests;
+			sourceTree = "<group>";
+		};
+		ADAEF3AB1361E9A5002F94A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADAEF3AC1361E9A5002F94A1 /* QuotifyTests-Info.plist */,
+				ADAEF3AD1361E9A5002F94A1 /* InfoPlist.strings */,
+				ADAEF3B01361E9A5002F94A1 /* QuotifyTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ADAEF37F1361E9A4002F94A1 /* Quotify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADAEF3B71361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "Quotify" */;
+			buildPhases = (
+				ADAEF37C1361E9A4002F94A1 /* Sources */,
+				ADAEF37D1361E9A4002F94A1 /* Frameworks */,
+				ADAEF37E1361E9A4002F94A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Quotify;
+			productName = Quotify;
+			productReference = ADAEF3801361E9A4002F94A1 /* Quotify.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ADAEF3A31361E9A5002F94A1 /* QuotifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADAEF3BA1361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "QuotifyTests" */;
+			buildPhases = (
+				ADAEF39F1361E9A5002F94A1 /* Sources */,
+				ADAEF3A01361E9A5002F94A1 /* Frameworks */,
+				ADAEF3A11361E9A5002F94A1 /* Resources */,
+				ADAEF3A21361E9A5002F94A1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADAEF3A91361E9A5002F94A1 /* PBXTargetDependency */,
+			);
+			name = QuotifyTests;
+			productName = QuotifyTests;
+			productReference = ADAEF3A41361E9A5002F94A1 /* QuotifyTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ADAEF3771361E9A4002F94A1 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = ADAEF37A1361E9A4002F94A1 /* Build configuration list for PBXProject "Quotify" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = ADAEF3751361E9A4002F94A1;
+			productRefGroup = ADAEF3811361E9A4002F94A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADAEF37F1361E9A4002F94A1 /* Quotify */,
+				ADAEF3A31361E9A5002F94A1 /* QuotifyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ADAEF37E1361E9A4002F94A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADAEF38F1361E9A4002F94A1 /* InfoPlist.strings in Resources */,
+				ADAEF3981361E9A4002F94A1 /* MainWindow.xib in Resources */,
+				ADAEF39E1361E9A4002F94A1 /* QuotifyViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADAEF3A11361E9A5002F94A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADAEF3AF1361E9A5002F94A1 /* InfoPlist.strings in Resources */,
+				ADAEF3B21361E9A5002F94A1 /* QuotifyTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADAEF3A21361E9A5002F94A1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ADAEF37C1361E9A4002F94A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADAEF3921361E9A4002F94A1 /* main.m in Sources */,
+				ADAEF3951361E9A4002F94A1 /* QuotifyAppDelegate.m in Sources */,
+				ADAEF39B1361E9A4002F94A1 /* QuotifyViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADAEF39F1361E9A5002F94A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADAEF3B41361E9A5002F94A1 /* QuotifyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADAEF3A91361E9A5002F94A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ADAEF37F1361E9A4002F94A1 /* Quotify */;
+			targetProxy = ADAEF3A81361E9A5002F94A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ADAEF38D1361E9A4002F94A1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADAEF38E1361E9A4002F94A1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		ADAEF3961361E9A4002F94A1 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADAEF3971361E9A4002F94A1 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADAEF39D1361E9A4002F94A1 /* en */,
+			);
+			name = QuotifyViewController.xib;
+			sourceTree = "<group>";
+		};
+		ADAEF3AD1361E9A5002F94A1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ADAEF3AE1361E9A5002F94A1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ADAEF3B51361E9A5002F94A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		ADAEF3B61361E9A5002F94A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		ADAEF3B81361E9A5002F94A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
+				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		ADAEF3B91361E9A5002F94A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
+				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		ADAEF3BB1361E9A5002F94A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quotify.app/Quotify";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuotifyTests/QuotifyTests-Prefix.pch";
+				INFOPLIST_FILE = "QuotifyTests/QuotifyTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		ADAEF3BC1361E9A5002F94A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quotify.app/Quotify";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuotifyTests/QuotifyTests-Prefix.pch";
+				INFOPLIST_FILE = "QuotifyTests/QuotifyTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ADAEF37A1361E9A4002F94A1 /* Build configuration list for PBXProject "Quotify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADAEF3B51361E9A5002F94A1 /* Debug */,
+				ADAEF3B61361E9A5002F94A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADAEF3B71361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "Quotify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADAEF3B81361E9A5002F94A1 /* Debug */,
+				ADAEF3B91361E9A5002F94A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ADAEF3BA1361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "QuotifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADAEF3BB1361E9A5002F94A1 /* Debug */,
+				ADAEF3BC1361E9A5002F94A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ADAEF3771361E9A4002F94A1 /* Project object */;
+}
