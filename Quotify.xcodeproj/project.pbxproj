@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD6209CD139088120026C796 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209CC139088120026C796 /* background.png */; };
+		AD6209D01390885B0026C796 /* cameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209CF1390885B0026C796 /* cameraButton.png */; };
+		AD6209D2139088FD0026C796 /* QuotifyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D1139088FD0026C796 /* QuotifyButton.png */; };
+		AD6209D413908B9F0026C796 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D313908B9F0026C796 /* topBar.png */; };
+		AD6209D613908DEF0026C796 /* app_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D513908DEF0026C796 /* app_bg.png */; };
+		AD6209D8139092220026C796 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D7139092220026C796 /* addButton.png */; };
 		ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
 		ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3861361E9A4002F94A1 /* Foundation.framework */; };
 		ADAEF3891361E9A4002F94A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */; };
@@ -70,6 +76,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD6209CC139088120026C796 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		AD6209CF1390885B0026C796 /* cameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraButton.png; sourceTree = "<group>"; };
+		AD6209D1139088FD0026C796 /* QuotifyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuotifyButton.png; sourceTree = "<group>"; };
+		AD6209D313908B9F0026C796 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
+		AD6209D513908DEF0026C796 /* app_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_bg.png; sourceTree = "<group>"; };
+		AD6209D7139092220026C796 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
 		ADAEF3801361E9A4002F94A1 /* Quotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAEF3841361E9A4002F94A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ADAEF3861361E9A4002F94A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,6 +255,12 @@
 			children = (
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				AD6209D7139092220026C796 /* addButton.png */,
+				AD6209D513908DEF0026C796 /* app_bg.png */,
+				AD6209D313908B9F0026C796 /* topBar.png */,
+				AD6209D1139088FD0026C796 /* QuotifyButton.png */,
+				AD6209CF1390885B0026C796 /* cameraButton.png */,
+				AD6209CC139088120026C796 /* background.png */,
 			);
 			name = "View Files";
 			path = Quotify;
@@ -461,6 +479,12 @@
 				ADAEF60F1367D0B3002F94A1 /* Credits.markdown in Resources */,
 				ADAEF6101367D0B3002F94A1 /* json2objc.html in Resources */,
 				ADAEF61A1367D0B3002F94A1 /* Changes.markdown in Resources */,
+				AD6209CD139088120026C796 /* background.png in Resources */,
+				AD6209D01390885B0026C796 /* cameraButton.png in Resources */,
+				AD6209D2139088FD0026C796 /* QuotifyButton.png in Resources */,
+				AD6209D413908B9F0026C796 /* topBar.png in Resources */,
+				AD6209D613908DEF0026C796 /* app_bg.png in Resources */,
+				AD6209D8139092220026C796 /* addButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

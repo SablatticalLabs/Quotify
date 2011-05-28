@@ -15,8 +15,8 @@
 @synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted;
 
 -(NSDictionary *)getQuoteAsDictionary{
-    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"speaker", @"text", @"witnesses", nil];
-    NSArray *objects = [NSArray arrayWithObjects:quotifier, speaker, text, witnesses, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"speaker", @"text", @"witnesses", @"time", nil];
+    NSArray *objects = [NSArray arrayWithObjects: @"quotifier", self.speaker, self.text, self.witnesses, self.time, nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 

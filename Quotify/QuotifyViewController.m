@@ -18,6 +18,7 @@
 @synthesize imgPicker;
 @synthesize firstView;
 @synthesize hideKeyboardButton;
+@synthesize timestampLabel;
 
 - (void)dealloc
 {
@@ -32,6 +33,8 @@
     [firstView release];
     [hideKeyboardButton release];
     [hideKeyboardButton release];
+    [timestampLabel release];
+    [timestampLabel release];
     [super dealloc];
 }
 
@@ -58,13 +61,17 @@
     currentQuote = [[Quote alloc] init];
     myComm = [[Comm alloc] init];
     
+    [currentQuote timestamp];
+    self.timestampLabel.text = currentQuote.time;
+    //get location and tag
+    
     self.imgPicker = [[UIImagePickerController alloc] init];
 	self.imgPicker.allowsEditing = YES;
 	self.imgPicker.delegate = self;
     self.imgPicker.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
     //self.imgPicker.showsCameraControls = YES;
     
-    
+    [self registerForKeyboardNotifications];
     
 }
 
@@ -82,13 +89,15 @@
     [hideKeyboardButton release];
     hideKeyboardButton = nil;
     [self setHideKeyboardButton:nil];
+    [timestampLabel release];
+    timestampLabel = nil;
+    [self setTimestampLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
@@ -99,15 +108,17 @@
 	currentQuote.image = pickedImage;	
 	[[picker parentViewController] dismissModalViewControllerAnimated:YES];
     //release imgPicker if necessary
+    
+    imageBox.image = currentQuote.image;
 }
 
 
 - (IBAction)quotifyPressed:(id)sender {
     
     currentQuote.text = quoteText.text;
-    currentQuote.speaker = speaker.text;
+    currentQuote.speaker = (NSString *)speaker.text;
     currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
-                                                         forKeys:nil];
+                                                         forKeys:[witnesses.text componentsSeparatedByString:@","]];
                               
     
     if ([myComm sendQuote:currentQuote]) {
@@ -122,6 +133,7 @@
     };
     
 }
+
 - (IBAction)imageBoxPressed:(id)sender {
     [self presentModalViewController:self.imgPicker animated:YES];
 }
@@ -130,6 +142,57 @@
     [quoteText resignFirstResponder];
 	[speaker resignFirstResponder];
 	[witnesses resignFirstResponder];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    activeField = nil;
+}
+
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    ((UIScrollView *)self.view).contentInset = contentInsets;
+    ((UIScrollView *)self.view).scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, activeField.frame.origin.y-kbSize.height);
+        [((UIScrollView *)self.view) setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    ((UIScrollView *)self.view).contentInset = contentInsets;
+    ((UIScrollView *)self.view).scrollIndicatorInsets = contentInsets;
 }
 
 @end

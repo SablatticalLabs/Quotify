@@ -23,7 +23,8 @@
     UIView *firstView;
     UIButton *hideKeyboardButton;
     UIButton *imageBoxPressed;
-
+    UITextField *activeField;
+    UILabel *timestampLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *quoteText;
@@ -34,10 +35,12 @@
 @property (nonatomic, retain) UIImagePickerController *imgPicker;
 @property (nonatomic, retain) IBOutlet UIView *firstView;
 @property (nonatomic, retain) IBOutlet UIButton *hideKeyboardButton;
+@property (nonatomic, retain) IBOutlet UILabel *timestampLabel;
 
 - (IBAction)quotifyPressed:(id)sender;
 - (IBAction)imageBoxPressed:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
+- (void)registerForKeyboardNotifications;
 
 
 @end

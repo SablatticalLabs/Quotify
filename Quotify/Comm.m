@@ -51,16 +51,16 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 	
 	
 	NSData *urlData;
-	NSURLResponse *urlResponse;
-	NSError *error;
+	//NSURLResponse *urlResponse;
+	//NSError *error;
 	
 	// Make synchronous request
 	urlData = [NSURLConnection sendSynchronousRequest:request
-									returningResponse:&urlResponse
-												error:&error];
+									returningResponse:nil
+												error:nil];
     
-    NSLog(@"urlResponse: %@",urlResponse);
-    NSLog(@"error: %@",error);
+    //NSLog(@"urlResponse: %@",urlResponse);
+    //NSLog(@"error: %@",error);
     
  	// Construct a String around the Data from the response and return
 	return [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
