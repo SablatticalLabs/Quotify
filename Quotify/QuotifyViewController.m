@@ -73,6 +73,7 @@
     //self.imgPicker.showsCameraControls = YES;
     
     [self registerForKeyboardNotifications];
+    quoteTextWasEdited = NO;
     
 }
 
@@ -171,6 +172,16 @@
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
+    if(((UIView*)quoteText).isFirstResponder){
+        if (!quoteTextWasEdited) {
+            quoteText.text = @"";
+            quoteTextWasEdited = YES;
+            //change the font
+        }
+        
+        activeField = quoteText;
+    }
+    
     NSDictionary* info = [aNotification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     

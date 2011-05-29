@@ -23,8 +23,9 @@
     UIView *firstView;
     UIButton *hideKeyboardButton;
     UIButton *imageBoxPressed;
-    UITextField *activeField;
+    UIView *activeField;
     UILabel *timestampLabel;
+    BOOL quoteTextWasEdited;
 }
 
 @property (nonatomic, retain) IBOutlet UITextView *quoteText;
