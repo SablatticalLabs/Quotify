@@ -63,6 +63,7 @@
 		ADAEF6191367D0B3002F94A1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF5151367D0B3002F94A1 /* SBJsonWriter.m */; };
 		ADAEF61A1367D0B3002F94A1 /* Changes.markdown in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF5161367D0B3002F94A1 /* Changes.markdown */; };
 		ADAEF6231367D38F002F94A1 /* Comm.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF6221367D38F002F94A1 /* Comm.m */; };
+		DD2A46C71392B8350077E2ED /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD2A46C61392B8350077E2ED /* Settings.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		ADAEF5161367D0B3002F94A1 /* Changes.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changes.markdown; sourceTree = "<group>"; };
 		ADAEF6211367D38F002F94A1 /* Comm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comm.h; sourceTree = "<group>"; };
 		ADAEF6221367D38F002F94A1 /* Comm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comm.m; sourceTree = "<group>"; };
+		DD2A46C61392B8350077E2ED /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				AD6209D1139088FD0026C796 /* QuotifyButton.png */,
 				AD6209CF1390885B0026C796 /* cameraButton.png */,
 				AD6209CC139088120026C796 /* background.png */,
+				DD2A46C61392B8350077E2ED /* Settings.xib */,
 			);
 			name = "View Files";
 			path = Quotify;
@@ -485,6 +488,7 @@
 				AD6209D413908B9F0026C796 /* topBar.png in Resources */,
 				AD6209D613908DEF0026C796 /* app_bg.png in Resources */,
 				AD6209D8139092220026C796 /* addButton.png in Resources */,
+				DD2A46C71392B8350077E2ED /* Settings.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

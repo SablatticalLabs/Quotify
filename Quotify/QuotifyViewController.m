@@ -11,15 +11,19 @@
 
 @implementation QuotifyViewController
 
+@synthesize settingsView;
 @synthesize quoteText;
 @synthesize speaker;
 @synthesize witnesses;
 @synthesize imageBox;
 @synthesize quotifyButton;
 @synthesize imgPicker;
+@synthesize settingsViewController;
 @synthesize firstView;
 @synthesize hideKeyboardButton;
 @synthesize timestampLabel;
+@synthesize settingsButton;
+@synthesize quotifier;
 
 - (void)dealloc
 {
@@ -36,6 +40,10 @@
     [hideKeyboardButton release];
     [timestampLabel release];
     [timestampLabel release];
+    [settingsButton release];
+    [settingsView release];
+    [settingsViewController release];
+    [quotifier release];
     [super dealloc];
 }
 
@@ -96,6 +104,10 @@
     [timestampLabel release];
     timestampLabel = nil;
     [self setTimestampLabel:nil];
+    [self setSettingsButton:nil];
+    [self setSettingsView:nil];
+    [self setSettingsViewController:nil];
+    [self setQuotifier:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -140,6 +152,19 @@
 
 - (IBAction)imageBoxPressed:(id)sender {
     [self presentModalViewController:self.imgPicker animated:YES];
+}
+
+-(IBAction)settingsPressed:(id)sender {
+    [self presentModalViewController:self.settingsViewController animated:YES];
+}
+
+- (IBAction)backToQuoteEntry:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)emailEditingEnded:(id)sender {
+    //save this forever (settings file)
+    currentQuote.quotifier = quotifier.text;
 }
 
 - (IBAction)hideKeyboard:(id)sender {
