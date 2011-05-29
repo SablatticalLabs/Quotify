@@ -58,6 +58,8 @@
     
     ((UIScrollView *)self.view).contentSize=CGSizeMake(320,720);
     
+    quoteText.clipsToBounds = YES;
+    quoteText.layer.cornerRadius = 10.0f;
     
     currentQuote = [[Quote alloc] init];
     myComm = [[Comm alloc] init];
