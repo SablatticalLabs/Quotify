@@ -24,6 +24,7 @@
 @synthesize timestampLabel;
 @synthesize settingsButton;
 @synthesize quotifier;
+@synthesize successViewController;
 
 - (void)dealloc
 {
@@ -44,6 +45,7 @@
     [settingsView release];
     [settingsViewController release];
     [quotifier release];
+    [successViewController release];
     [super dealloc];
 }
 
@@ -108,6 +110,7 @@
     [self setSettingsView:nil];
     [self setSettingsViewController:nil];
     [self setQuotifier:nil];
+    [self setSuccessViewController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -141,11 +144,15 @@
         if (![myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID]) {
             //this point reached if quote succeeds and image fails
             //quote sent, image failed, save it for later
+            [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Your quote was sent successfully but the picture was not included."];
         }
+        //success
+        [self showSuccessView];
     } else {
         //oh god the world is ending
         //this point reached if both quote and image fail
         //save the currentQuote and image for later sending
+        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later!"];
     };
     
 }
@@ -160,6 +167,10 @@
 
 - (IBAction)backToQuoteEntry:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)showSuccessView{
+    [self presentModalViewController:self.successViewController animated:YES];
 }
 
 - (IBAction)emailEditingEnded:(id)sender {
@@ -183,6 +194,13 @@
     activeField = nil;
 }
 
+- (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage
+{
+    UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [failureAlert show];
+    [failureAlert release];
+}
+
 
 - (void)registerForKeyboardNotifications
 {
@@ -199,7 +217,7 @@
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
-    if(((UIView*)quoteText).isFirstResponder){
+    if(((UIView*)self.quoteText).isFirstResponder){
         if (!quoteTextWasEdited) {
             quoteText.text = @"";
             quoteTextWasEdited = YES;

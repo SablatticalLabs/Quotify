@@ -29,6 +29,7 @@
     UILabel *timestampLabel;
     UIButton *settingsButton;
     UITextField *quotifier;
+    UIViewController *successViewController;
     BOOL quoteTextWasEdited;
     UIView *settingsView;
 }
@@ -46,6 +47,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, retain) IBOutlet UIButton *settingsButton;
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
+@property (nonatomic, retain) IBOutlet UIViewController *successViewController;
 
 - (IBAction)quotifyPressed:(id)sender;
 - (IBAction)imageBoxPressed:(id)sender;
@@ -54,6 +56,8 @@
 - (IBAction)backToQuoteEntry:(id)sender;
 - (IBAction)emailEditingEnded:(id)sender;
 - (void)registerForKeyboardNotifications;
+- (void)showSuccessView;
+- (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
 
 
 @end
