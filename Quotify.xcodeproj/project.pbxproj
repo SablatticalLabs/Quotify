@@ -63,6 +63,10 @@
 		ADAEF6191367D0B3002F94A1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF5151367D0B3002F94A1 /* SBJsonWriter.m */; };
 		ADAEF61A1367D0B3002F94A1 /* Changes.markdown in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF5161367D0B3002F94A1 /* Changes.markdown */; };
 		ADAEF6231367D38F002F94A1 /* Comm.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF6221367D38F002F94A1 /* Comm.m */; };
+		DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD101813944B7300A40AF4 /* SuccessViewController.m */; };
+		DDBD101B13944B7400A40AF4 /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101913944B7300A40AF4 /* SuccessViewController.xib */; };
+		DDBD101F1394697700A40AF4 /* endQuoteMark.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101D1394697700A40AF4 /* endQuoteMark.png */; };
+		DDBD10201394697700A40AF4 /* beginQuoteMark.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101E1394697700A40AF4 /* beginQuoteMark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +153,11 @@
 		ADAEF5161367D0B3002F94A1 /* Changes.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changes.markdown; sourceTree = "<group>"; };
 		ADAEF6211367D38F002F94A1 /* Comm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comm.h; sourceTree = "<group>"; };
 		ADAEF6221367D38F002F94A1 /* Comm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comm.m; sourceTree = "<group>"; };
+		DDBD101713944B7300A40AF4 /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
+		DDBD101813944B7300A40AF4 /* SuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessViewController.m; sourceTree = "<group>"; };
+		DDBD101913944B7300A40AF4 /* SuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
+		DDBD101D1394697700A40AF4 /* endQuoteMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endQuoteMark.png; sourceTree = "<group>"; };
+		DDBD101E1394697700A40AF4 /* beginQuoteMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beginQuoteMark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +222,8 @@
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
 				ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */,
+				DDBD101713944B7300A40AF4 /* SuccessViewController.h */,
+				DDBD101813944B7300A40AF4 /* SuccessViewController.m */,
 				ADAEF3C11361EAB2002F94A1 /* Model */,
 				ADAEF38B1361E9A4002F94A1 /* Supporting Files */,
 			);
@@ -255,9 +266,12 @@
 			children = (
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				AD6209D7139092220026C796 /* addButton.png */,
 				AD6209D513908DEF0026C796 /* app_bg.png */,
 				AD6209D313908B9F0026C796 /* topBar.png */,
+				DDBD101D1394697700A40AF4 /* endQuoteMark.png */,
+				DDBD101E1394697700A40AF4 /* beginQuoteMark.png */,
 				AD6209D1139088FD0026C796 /* QuotifyButton.png */,
 				AD6209CF1390885B0026C796 /* cameraButton.png */,
 				AD6209CC139088120026C796 /* background.png */,
@@ -485,6 +499,9 @@
 				AD6209D413908B9F0026C796 /* topBar.png in Resources */,
 				AD6209D613908DEF0026C796 /* app_bg.png in Resources */,
 				AD6209D8139092220026C796 /* addButton.png in Resources */,
+				DDBD101B13944B7400A40AF4 /* SuccessViewController.xib in Resources */,
+				DDBD101F1394697700A40AF4 /* endQuoteMark.png in Resources */,
+				DDBD10201394697700A40AF4 /* beginQuoteMark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +551,7 @@
 				ADAEF6181367D0B3002F94A1 /* SBJsonTokeniser.m in Sources */,
 				ADAEF6191367D0B3002F94A1 /* SBJsonWriter.m in Sources */,
 				ADAEF6231367D38F002F94A1 /* Comm.m in Sources */,
+				DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,8 +74,8 @@
     currentQuote = [[Quote alloc] init];
     myComm = [[Comm alloc] init];
     
-    [currentQuote timestamp];
-    self.timestampLabel.text = currentQuote.time;
+    //[currentQuote timestamp];
+    //self.timestampLabel.text = currentQuote.time;
     //get location and tag
     
     self.imgPicker = [[UIImagePickerController alloc] init];
@@ -170,6 +170,13 @@
 }
 
 - (void)showSuccessView{
+    if (!self.successViewController) {
+        self.successViewController = [[SuccessViewController alloc] initWithQuote:currentQuote];
+    }
+    else{
+        [self.successViewController displayQuote:currentQuote];
+    }
+    
     [self presentModalViewController:self.successViewController animated:YES];
 }
 
@@ -247,6 +254,10 @@
 // Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
+    if (quoteTextWasEdited) {
+        [currentQuote timestamp];
+        self.timestampLabel.text = currentQuote.time;
+    }
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     ((UIScrollView *)self.view).contentInset = contentInsets;
     ((UIScrollView *)self.view).scrollIndicatorInsets = contentInsets;

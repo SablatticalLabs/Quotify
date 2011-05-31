@@ -101,7 +101,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
     
     NSLog(@"image response: %@",responseString);
     
-	int success = [[result valueForKey:@"success"] intValue];
+	int success = [[result valueForKey:@"Success"] intValue];
     
     return success;    
 }
