@@ -83,7 +83,7 @@
     self.imgPicker = [[UIImagePickerController alloc] init];
 	self.imgPicker.allowsEditing = YES;
 	self.imgPicker.delegate = self;
-    self.imgPicker.sourceType =  UIImagePickerControllerSourceTypePhotoLibrary;
+    self.imgPicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
     //self.imgPicker.showsCameraControls = YES;
     
     [self registerForKeyboardNotifications];
