@@ -16,6 +16,7 @@
 		AD6209D413908B9F0026C796 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D313908B9F0026C796 /* topBar.png */; };
 		AD6209D613908DEF0026C796 /* app_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D513908DEF0026C796 /* app_bg.png */; };
 		AD6209D8139092220026C796 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D7139092220026C796 /* addButton.png */; };
+		ADA265101396ACAD00F9155C /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADA2650F1396ACAD00F9155C /* Entitlements.plist */; };
 		ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
 		ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3861361E9A4002F94A1 /* Foundation.framework */; };
 		ADAEF3891361E9A4002F94A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */; };
@@ -92,6 +93,7 @@
 		AD6209D313908B9F0026C796 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		AD6209D513908DEF0026C796 /* app_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_bg.png; sourceTree = "<group>"; };
 		AD6209D7139092220026C796 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
+		ADA2650F1396ACAD00F9155C /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ADAEF3801361E9A4002F94A1 /* Quotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAEF3841361E9A4002F94A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ADAEF3861361E9A4002F94A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -193,6 +195,7 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
+				ADA2650F1396ACAD00F9155C /* Entitlements.plist */,
 				ADAEF38A1361E9A4002F94A1 /* Quotify */,
 				ADAEF3C01361EA7E002F94A1 /* View Files */,
 				ADAEF3AA1361E9A5002F94A1 /* QuotifyTests */,
@@ -514,6 +517,7 @@
 				AD1BCAEF13951149008EE90E /* blankBar.png in Resources */,
 				AD1BCAF2139511F1008EE90E /* leatherBackground.png in Resources */,
 				AD1BCAF413951704008EE90E /* QuotifyBackgroundColor.png in Resources */,
+				ADA265101396ACAD00F9155C /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +625,59 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		ADA2650B1396AAC400F9155C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=iphoneos*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Distribution;
+		};
+		ADA2650C1396AAC400F9155C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = Entitlements.plist;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
+				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
+		ADA2650D1396AAC400F9155C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quotify.app/Quotify";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QuotifyTests/QuotifyTests-Prefix.pch";
+				INFOPLIST_FILE = "QuotifyTests/QuotifyTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Distribution;
+		};
 		ADAEF3B51361E9A5002F94A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -733,27 +790,30 @@
 			buildConfigurations = (
 				ADAEF3B51361E9A5002F94A1 /* Debug */,
 				ADAEF3B61361E9A5002F94A1 /* Release */,
+				ADA2650B1396AAC400F9155C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Distribution;
 		};
 		ADAEF3B71361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "Quotify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADAEF3B81361E9A5002F94A1 /* Debug */,
 				ADAEF3B91361E9A5002F94A1 /* Release */,
+				ADA2650C1396AAC400F9155C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Distribution;
 		};
 		ADAEF3BA1361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "QuotifyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADAEF3BB1361E9A5002F94A1 /* Debug */,
 				ADAEF3BC1361E9A5002F94A1 /* Release */,
+				ADA2650D1396AAC400F9155C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Distribution;
 		};
 /* End XCConfigurationList section */
 	};
