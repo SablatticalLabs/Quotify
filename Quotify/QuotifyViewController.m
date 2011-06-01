@@ -92,11 +92,6 @@
 
 }
 
-- (void)showFirstTimeSettings{
-    [self presentModalViewController:self.settingsViewController animated:YES];
-    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started."];
-}
-
 -(void)viewDidAppear:(BOOL)animated{
     currentQuote.quotifier = [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"];
     self.quotifier.text = currentQuote.quotifier;
@@ -104,6 +99,11 @@
         [self showFirstTimeSettings];
     }
     
+}
+
+- (void)showFirstTimeSettings{
+    [self presentModalViewController:self.settingsViewController animated:YES];
+    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started."];
 }
 
 - (void)viewDidUnload
@@ -148,53 +148,42 @@
     imageBox.image = currentQuote.image;
 }
 
-- (void) quoteTextSent{
-    [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
+- (void) quoteTextSent:(BOOL)success {
+    if (success) {
+        [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
+    }
+    else{
+        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later!"];
+    }
 }
 
-- (void) quoteImageSent{
+- (void) quoteImageSent:(BOOL)success {
     [quotifyingActivityIndicator stopAnimating];
-    [self showSuccessView];
+    if (success) {
+        [self showSuccessView];
+    }
+    else{
+        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Your quote was sent successfully but the picture was not included."];
+    }
 }
 
 - (IBAction)quotifyPressed:(id)sender {
-    if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)
-       /*||([speaker.text rangeOfString:@""].location == NSNotFound)*/)//and so on
-        
+    if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)//quoteText was edited 
+       && !([quoteText.text isEqualToString:@""]) && !([speaker.text isEqualToString:@""]))//quoteText and speaker are not blank
     {
         currentQuote.text = quoteText.text;
         currentQuote.speaker = (NSString *)speaker.text;
         currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
-                                                         forKeys:[witnesses.text componentsSeparatedByString:@","]];
+                                                             forKeys:[witnesses.text componentsSeparatedByString:@","]];
                               
-    
         [quotifyingActivityIndicator startAnimating];
-    
-        [myComm sendQuote:currentQuote];
+        [myComm sendQuote:currentQuote];//result will be delegated to quoteTextSent method
     }
     
     else {
         //Popup saying to fill in the fields
-        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Please complete the empty fields."];
+        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"We need at least a quote and a speaker for it to be awesome..."];
     }
-    //if (myComm.quoteSentSuccessfully) {
-        //[quotifyingActivityIndicator stopAnimating];
-        
-      //  if (![myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID]) {
-            //this point reached if quote succeeds and image fails
-            //quote sent, image failed, save it for later
-            //[self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Your quote was sent successfully but the picture was not included."];
-        //}
-        //[quotifyingActivityIndicator stopAnimating];
-        //success
-        //[self showSuccessView];
-   // } else {
-        //oh god the world is ending
-        //this point reached if both quote and image fail
-        //save the currentQuote and image for later sending
-        //[self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later!"];
-   // };
-    
 }
 
 - (IBAction)imageBoxPressed:(id)sender {

@@ -7,6 +7,7 @@
 //
 
 #import "SuccessViewController.h"
+#import "QuotifyViewController.h"
 //#import "Quote.h"
 
 
@@ -41,7 +42,7 @@
 
 - (IBAction)newQuotePressed:(id)sender 
 {
-    [self.parentViewController setupNewQuote];
+    [(QuotifyViewController *)self.parentViewController setupNewQuote];
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 

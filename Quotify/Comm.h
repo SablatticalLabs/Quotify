@@ -11,20 +11,20 @@
 #import "JSON.h"
 
 @protocol CommDelegate
-- (void)quoteTextSent;
-- (void)quoteImageSent;
+- (void)quoteTextSent:(BOOL)success;
+- (void)quoteImageSent:(BOOL)success;
 @end
 
 @interface Comm : NSObject{
     
-    BOOL quoteSentSuccessfully;
+    BOOL quoteTextSentSuccessfully;
     id <CommDelegate> delegate;
     
 }
 extern NSString * const sendQuoteToURL;
 extern NSString * const sendImageToURLwithPrefix;
 
-@property BOOL quoteSentSuccessfully;
+@property BOOL quoteTextSentSuccessfully;
 @property (retain) Quote* quoteToSend;
 @property (retain) id <CommDelegate> delegate;
 

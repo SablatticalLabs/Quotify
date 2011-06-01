@@ -11,7 +11,7 @@
 
 @implementation Comm
 
-@synthesize quoteToSend, quoteSentSuccessfully, delegate;
+@synthesize quoteToSend, quoteTextSentSuccessfully, delegate;
 
 NSString * const sendQuoteToURL = @"http://www.quotify.it/api/addquote";
 NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
@@ -24,20 +24,6 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 	//NSString* response = 
     [self sendHTTPrequest:theQuote.getQuoteAsJSONString];
     self.quoteToSend = theQuote;
-	//NSLog(@"Output: %@",response);
-	
-	// Parse the response
-	//NSDictionary* result = [response JSONValue];
-    //[response release];
-    
-	//int success = 0;//[[result valueForKey:@"success"] intValue];
-	//theQuote.UrlWhereQuoteIsPosted = [result valueForKey:@"url"];
-	//theQuote.postID = [result valueForKey:@"guid"];
-
-    
-    //Return bool valued success
-    //return success;
-    //self.quoteSentSuccessfully = success;
 }
 
 - (void)sendHTTPrequest:(NSString*)myData{
@@ -50,21 +36,10 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 	[request setHTTPBody:[myData dataUsingEncoding:NSUTF8StringEncoding]];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
 	
-    //[[NSURLConnection alloc] initWithRequest:request delegate:self];
-	
-	
-	//NSData *urlData;
-	//NSURLResponse *urlResponse;
-	//NSError *error;
-	
-	// Make synchronous request
-	NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:request delegate:self];
-    //NSLog(@"urlResponse: %@",urlResponse);
-    //NSLog(@"error: %@",error);
-    
- 	// Construct a String around the Data from the response and return
-	//return [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+	// Make asynchronous request
+	/*NSURLConnection *urlConnection = */[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -72,25 +47,28 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    int success = 0;
     NSString* dataAsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"urlData: %@",dataAsString);
     NSDictionary* result = [dataAsString JSONValue];
-    if ([result objectForKey:@"success"]) {
-        //sent quote succeeded
-        success = 1;//[[result valueForKey:@"success"] intValue];
+    
+    NSNumber *n_Success = [result objectForKey:@"success"];
+    if (n_Success != nil) 
+    {
         self.quoteToSend.UrlWhereQuoteIsPosted = [result valueForKey:@"url"];
         self.quoteToSend.postID = [result valueForKey:@"guid"];
-        self.quoteSentSuccessfully = success;
-        [[self delegate] quoteTextSent];
+        self.quoteTextSentSuccessfully = ([n_Success intValue]== 1);
+        [[self delegate] quoteTextSent:self.quoteTextSentSuccessfully];
     }
-    if ([result objectForKey:@"Success"]) {
-        //image uploaded successfully
-        success = 1;
-        [[self delegate] quoteImageSent];
+    else if([result objectForKey:@"Success"])
+    {
+        [[self delegate] quoteImageSent:1];
     }
-    //self.quoteSentSuccessfully = success;
+    else
+    {
+        [[self delegate] quoteImageSent:0];
+    }
 }
+
 
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID{
     //Send data
@@ -120,16 +98,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 	[request setHTTPBody:body];
 	
 	// now lets make the connection to the web
-	NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:request delegate:self];
-	//NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-	
-    //NSDictionary* result = [responseString JSONValue];
-    
-    //NSLog(@"image response: %@",responseString);
-    
-	//int success = [[result valueForKey:@"Success"] intValue];
-    
-    //return success;    
+	/*NSURLConnection *urlConnection = */[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 @end
