@@ -149,7 +149,7 @@
 }
 
 - (void) quoteTextSent:(BOOL)success {
-    if (success) {
+    if (success && currentQuote.image != nil) {
         [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
     }
     else{
