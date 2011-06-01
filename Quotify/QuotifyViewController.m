@@ -158,7 +158,8 @@
 }
 
 - (IBAction)quotifyPressed:(id)sender {
-    if(!([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound))//and so on
+    if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)
+       /*||([speaker.text rangeOfString:@""].location == NSNotFound)*/)//and so on
         
     {
         currentQuote.text = quoteText.text;
@@ -174,6 +175,7 @@
     
     else {
         //Popup saying to fill in the fields
+        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Please complete the empty fields."];
     }
     //if (myComm.quoteSentSuccessfully) {
         //[quotifyingActivityIndicator stopAnimating];
