@@ -41,6 +41,7 @@
 
 - (IBAction)newQuotePressed:(id)sender 
 {
+    [self.parentViewController setupNewQuote];
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 

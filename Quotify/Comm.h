@@ -8,21 +8,29 @@
 
 #import <Foundation/Foundation.h>
 #import "Quote.h"
+#import "JSON.h"
 
+@protocol CommDelegate
+- (void)quoteTextSent;
+- (void)quoteImageSent;
+@end
 
-@interface Comm : NSObject {
+@interface Comm : NSObject{
     
-
-    @private
+    BOOL quoteSentSuccessfully;
+    id <CommDelegate> delegate;
     
 }
 extern NSString * const sendQuoteToURL;
 extern NSString * const sendImageToURLwithPrefix;
 
+@property BOOL quoteSentSuccessfully;
+@property (retain) Quote* quoteToSend;
+@property (retain) id <CommDelegate> delegate;
 
--(BOOL)sendQuote:(Quote*)theQuote;
--(BOOL)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;
--(NSString *)sendHTTPrequest:(NSString*)myData;
+-(void)sendQuote:(Quote*)theQuote;
+-(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;
+-(void)sendHTTPrequest:(NSString*)myData;
 
 
 @end
