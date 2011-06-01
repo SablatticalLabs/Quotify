@@ -25,6 +25,7 @@
 @synthesize settingsButton;
 @synthesize quotifier;
 @synthesize successViewController;
+@synthesize quotifyingActivityIndicator;
 
 - (void)dealloc
 {
@@ -46,6 +47,7 @@
     [settingsViewController release];
     [quotifier release];
     [successViewController release];
+    [quotifyingActivityIndicator release];
     [super dealloc];
 }
 
@@ -68,14 +70,14 @@
     
     ((UIScrollView *)self.view).contentSize=CGSizeMake(320,720);
     
+    
     quoteText.clipsToBounds = YES;
     quoteText.layer.cornerRadius = 10.0f;
     
     currentQuote = [[Quote alloc] init];
     myComm = [[Comm alloc] init];
+    myComm.delegate = self;
     
-    //[currentQuote timestamp];
-    //self.timestampLabel.text = currentQuote.time;
     //get location and tag
     
     self.imgPicker = [[UIImagePickerController alloc] init];
@@ -87,8 +89,22 @@
     [self registerForKeyboardNotifications];
     quoteTextWasEdited = NO;
     
+
 }
 
+- (void)showFirstTimeSettings{
+    [self presentModalViewController:self.settingsViewController animated:YES];
+    [self raiseFailurePopupWithTitle:@"Welcome" andMessage:@"you the man. enter that email."];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    currentQuote.quotifier = [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"];
+    self.quotifier.text = currentQuote.quotifier;
+    if ([currentQuote.quotifier rangeOfString:@"@"].location == NSNotFound) {
+        [self showFirstTimeSettings];
+    }
+    
+}
 
 - (void)viewDidUnload
 {
@@ -111,6 +127,7 @@
     [self setSettingsViewController:nil];
     [self setQuotifier:nil];
     [self setSuccessViewController:nil];
+    [self setQuotifyingActivityIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -131,6 +148,14 @@
     imageBox.image = currentQuote.image;
 }
 
+- (void) quoteTextSent{
+    [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
+}
+
+- (void) quoteImageSent{
+    [quotifyingActivityIndicator stopAnimating];
+    [self showSuccessView];
+}
 
 - (IBAction)quotifyPressed:(id)sender {
     
@@ -140,20 +165,26 @@
                                                          forKeys:[witnesses.text componentsSeparatedByString:@","]];
                               
     
-    if ([myComm sendQuote:currentQuote]) {
-        if (![myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID]) {
+    [quotifyingActivityIndicator startAnimating];
+    
+    [myComm sendQuote:currentQuote];
+    //if (myComm.quoteSentSuccessfully) {
+        //[quotifyingActivityIndicator stopAnimating];
+        
+      //  if (![myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID]) {
             //this point reached if quote succeeds and image fails
             //quote sent, image failed, save it for later
-            [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Your quote was sent successfully but the picture was not included."];
-        }
+            //[self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Your quote was sent successfully but the picture was not included."];
+        //}
+        //[quotifyingActivityIndicator stopAnimating];
         //success
-        [self showSuccessView];
-    } else {
+        //[self showSuccessView];
+   // } else {
         //oh god the world is ending
         //this point reached if both quote and image fail
         //save the currentQuote and image for later sending
-        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later!"];
-    };
+        //[self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later!"];
+   // };
     
 }
 
@@ -183,6 +214,9 @@
 - (IBAction)emailEditingEnded:(id)sender {
     //save this forever (settings file)
     currentQuote.quotifier = quotifier.text;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
+    [prefs synchronize];
 }
 
 - (IBAction)hideKeyboard:(id)sender {
@@ -223,6 +257,17 @@
     [failureAlert release];
 }
 
+- (void)setupNewQuote
+{
+    [currentQuote release];
+    currentQuote = [[Quote alloc] init];
+    quoteText.text = @"What was said?";
+    quoteText.textColor = [UIColor lightGrayColor];
+    quoteTextWasEdited = NO;
+    speaker.text = @"";
+    imageBox.image = nil;
+}
+
 
 - (void)registerForKeyboardNotifications
 {
@@ -243,7 +288,7 @@
         if (!quoteTextWasEdited) {
             quoteText.text = @"";
             quoteTextWasEdited = YES;
-            //change the font
+            quoteText.textColor = [UIColor blackColor];
         }
         
         activeField = quoteText;

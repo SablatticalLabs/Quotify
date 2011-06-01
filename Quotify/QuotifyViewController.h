@@ -12,7 +12,7 @@
 #import "Comm.h"
 #import "SuccessViewController.h"
 
-@interface QuotifyViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate> {
+@interface QuotifyViewController : UIViewController <CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
@@ -31,6 +31,7 @@
     UIButton *settingsButton;
     UITextField *quotifier;
     SuccessViewController *successViewController;
+    UIActivityIndicatorView *quotifyingActivityIndicator;
     BOOL quoteTextWasEdited;
     UIView *settingsView;
 }
@@ -49,6 +50,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *settingsButton;
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
 @property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
 
 - (IBAction)quotifyPressed:(id)sender;
 - (IBAction)imageBoxPressed:(id)sender;
@@ -59,6 +61,8 @@
 - (void)registerForKeyboardNotifications;
 - (void)showSuccessView;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
+- (void)setupNewQuote;
+- (void)showFirstTimeSettings;
 
 
 @end
