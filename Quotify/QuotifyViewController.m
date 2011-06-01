@@ -94,7 +94,7 @@
 
 - (void)showFirstTimeSettings{
     [self presentModalViewController:self.settingsViewController animated:YES];
-    [self raiseFailurePopupWithTitle:@"Welcome" andMessage:@"you the man. enter that email."];
+    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started."];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -158,16 +158,23 @@
 }
 
 - (IBAction)quotifyPressed:(id)sender {
-    
-    currentQuote.text = quoteText.text;
-    currentQuote.speaker = (NSString *)speaker.text;
-    currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
+    if(!([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound))//and so on
+        
+    {
+        currentQuote.text = quoteText.text;
+        currentQuote.speaker = (NSString *)speaker.text;
+        currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
                                                          forKeys:[witnesses.text componentsSeparatedByString:@","]];
                               
     
-    [quotifyingActivityIndicator startAnimating];
+        [quotifyingActivityIndicator startAnimating];
     
-    [myComm sendQuote:currentQuote];
+        [myComm sendQuote:currentQuote];
+    }
+    
+    else {
+        //Popup saying to fill in the fields
+    }
     //if (myComm.quoteSentSuccessfully) {
         //[quotifyingActivityIndicator stopAnimating];
         

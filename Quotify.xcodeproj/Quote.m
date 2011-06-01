@@ -14,6 +14,7 @@
 
 @synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted;
 
+// This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{
     NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"speaker", @"text", @"witnesses", @"time", nil];
     NSArray *objects = [NSArray arrayWithObjects: @"quotifier", self.speaker, self.text, self.witnesses, self.time, nil];
