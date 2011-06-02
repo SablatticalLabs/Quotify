@@ -800,7 +800,7 @@
 				ADA2650B1396AAC400F9155C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Distribution;
+			defaultConfigurationName = Debug;
 		};
 		ADAEF3B71361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "Quotify" */ = {
 			isa = XCConfigurationList;
@@ -810,7 +810,7 @@
 				ADA2650C1396AAC400F9155C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Distribution;
+			defaultConfigurationName = Debug;
 		};
 		ADAEF3BA1361E9A5002F94A1 /* Build configuration list for PBXNativeTarget "QuotifyTests" */ = {
 			isa = XCConfigurationList;
@@ -820,7 +820,7 @@
 				ADA2650D1396AAC400F9155C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Distribution;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
