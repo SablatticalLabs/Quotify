@@ -81,8 +81,14 @@
     self.imgPicker = [[UIImagePickerController alloc] init];
 	self.imgPicker.allowsEditing = YES;
 	self.imgPicker.delegate = self;
-    self.imgPicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
-    //self.imgPicker.showsCameraControls = YES;
+    if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
+	{	
+        self.imgPicker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+        self.imgPicker.showsCameraControls = YES;
+    }
+    else{
+        self.imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
     
     [self registerForKeyboardNotifications];
     quoteTextWasEdited = NO;
@@ -195,7 +201,27 @@
 }
 
 - (IBAction)imageBoxPressed:(id)sender {
-    [self presentModalViewController:self.imgPicker animated:YES];
+    if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
+	{	
+    UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil];
+    pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
+    }
+    else
+    {
+        [self presentModalViewController:self.imgPicker animated:YES];
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Take Picture"]) {
+        imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentModalViewController:self.imgPicker animated:YES];
+    }
+    else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose from Library"]){
+        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentModalViewController:self.imgPicker animated:YES];
+    }
 }
 
 -(IBAction)settingsPressed:(id)sender {
