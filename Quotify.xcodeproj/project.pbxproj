@@ -68,6 +68,7 @@
 		ADAEF61A1367D0B3002F94A1 /* Changes.markdown in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF5161367D0B3002F94A1 /* Changes.markdown */; };
 		ADAEF6231367D38F002F94A1 /* Comm.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF6221367D38F002F94A1 /* Comm.m */; };
 		ADE1C3401396F10C00D28669 /* Quotify_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE1C33F1396F10C00D28669 /* Quotify_logo.png */; };
+		DDA57D69139827EA00498283 /* Quotify_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA57D68139827EA00498283 /* Quotify_logo_small.png */; };
 		DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD101813944B7300A40AF4 /* SuccessViewController.m */; };
 		DDBD101B13944B7400A40AF4 /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101913944B7300A40AF4 /* SuccessViewController.xib */; };
 		DDBD101F1394697700A40AF4 /* endQuoteMark.png in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101D1394697700A40AF4 /* endQuoteMark.png */; };
@@ -163,6 +164,7 @@
 		ADAEF6211367D38F002F94A1 /* Comm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comm.h; sourceTree = "<group>"; };
 		ADAEF6221367D38F002F94A1 /* Comm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comm.m; sourceTree = "<group>"; };
 		ADE1C33F1396F10C00D28669 /* Quotify_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quotify_logo.png; sourceTree = "<group>"; };
+		DDA57D68139827EA00498283 /* Quotify_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quotify_logo_small.png; sourceTree = "<group>"; };
 		DDBD101713944B7300A40AF4 /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
 		DDBD101813944B7300A40AF4 /* SuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessViewController.m; sourceTree = "<group>"; };
 		DDBD101913944B7300A40AF4 /* SuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuccessViewController.xib; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
+				DDA57D68139827EA00498283 /* Quotify_logo_small.png */,
 				ADE1C33F1396F10C00D28669 /* Quotify_logo.png */,
 				ADA2650F1396ACAD00F9155C /* Entitlements.plist */,
 				ADAEF38A1361E9A4002F94A1 /* Quotify */,
@@ -522,6 +525,7 @@
 				AD1BCAF413951704008EE90E /* QuotifyBackgroundColor.png in Resources */,
 				ADA265101396ACAD00F9155C /* Entitlements.plist in Resources */,
 				ADE1C3401396F10C00D28669 /* Quotify_logo.png in Resources */,
+				DDA57D69139827EA00498283 /* Quotify_logo_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +637,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Max Rosenblatt";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Max Rosenblatt";
 				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -641,6 +646,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "C8033766-E45A-4304-9907-BF5D8BE714E7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8033766-E45A-4304-9907-BF5D8BE714E7";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -651,6 +658,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = Entitlements.plist;
 				COPY_PHASE_STRIP = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
 				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
@@ -687,7 +695,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Max Rosenblatt";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -696,6 +705,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8033766-E45A-4304-9907-BF5D8BE714E7";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -704,13 +715,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Max Rosenblatt";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Max Rosenblatt";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "C8033766-E45A-4304-9907-BF5D8BE714E7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8033766-E45A-4304-9907-BF5D8BE714E7";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -719,12 +733,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Max Rosenblatt (C2A737S7H3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Max Rosenblatt (C2A737S7H3)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
 				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C7D7FBC7-F08A-44BB-943A-304AB742D37C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7D7FBC7-F08A-44BB-943A-304AB742D37C";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

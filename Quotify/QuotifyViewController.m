@@ -67,9 +67,7 @@
 {
     [super viewDidLoad];
     
-    
-    ((UIScrollView *)self.view).contentSize=CGSizeMake(320,720);
-    
+    ((UIScrollView *)self.view).contentSize=CGSizeMake(320, self.view.frame.size.height);
     
     quoteText.clipsToBounds = YES;
     quoteText.layer.cornerRadius = 10.0f;
@@ -89,7 +87,7 @@
     [self registerForKeyboardNotifications];
     quoteTextWasEdited = NO;
     
-
+    //[self viewDidAppear:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -108,7 +106,10 @@
 
 - (void)viewDidUnload
 {
+    [currentQuote release];
+    [myComm release];
     [quoteText release];
+    [imgPicker release];
     quoteText = nil;
     [self setSpeaker:nil];
     [self setQuoteText:nil];
@@ -149,11 +150,18 @@
 }
 
 - (void) quoteTextSent:(BOOL)success {
-    if (success && currentQuote.image != nil) {
-        [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
+    if (success){
+        if(currentQuote.image != nil){
+            [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
+        }
+        else{
+            [quotifyingActivityIndicator stopAnimating];
+            [self showSuccessView];
+        }
+        
     }
     else{
-        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later!"];
+        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later..."];
     }
 }
 

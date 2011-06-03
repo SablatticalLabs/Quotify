@@ -39,7 +39,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 
 	
 	// Make asynchronous request
-	/*NSURLConnection *urlConnection = */[NSURLConnection connectionWithRequest:request delegate:self];
+	NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -50,23 +50,25 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
     NSString* dataAsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"urlData: %@",dataAsString);
     NSDictionary* result = [dataAsString JSONValue];
+    [dataAsString release];
     
     NSNumber *n_Success = [result objectForKey:@"success"];
-    if (n_Success != nil) 
+    if (n_Success != nil)//quoteText Sent... 
     {
         self.quoteToSend.UrlWhereQuoteIsPosted = [result valueForKey:@"url"];
         self.quoteToSend.postID = [result valueForKey:@"guid"];
         self.quoteTextSentSuccessfully = ([n_Success intValue]== 1);
         [[self delegate] quoteTextSent:self.quoteTextSentSuccessfully];
     }
-    else if([result objectForKey:@"Success"])
+    else if([result objectForKey:@"Success"])//quoteImage Sent...
     {
         [[self delegate] quoteImageSent:1];
     }
-    else
+    else //Neither was sent
     {
-        [[self delegate] quoteImageSent:0];
+        [[self delegate] quoteTextSent:0];
     }
+    [connection release];
 }
 
 
