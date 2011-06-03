@@ -12,7 +12,7 @@
 #import "Comm.h"
 #import "SuccessViewController.h"
 
-@interface QuotifyViewController : UIViewController <CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate> {
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;

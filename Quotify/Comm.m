@@ -39,7 +39,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 
 	
 	// Make asynchronous request
-	NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+	/*NSURLConnection *urlConnection =*/ [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -68,7 +68,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
     {
         [[self delegate] quoteTextSent:0];
     }
-    [connection release];
+    //[connection release]; probably caused a crash because not ours to release
 }
 
 
