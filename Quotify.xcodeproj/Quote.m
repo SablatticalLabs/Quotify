@@ -17,7 +17,7 @@
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{
     NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"speaker", @"text", @"witnesses", @"time", nil];
-    NSArray *objects = [NSArray arrayWithObjects: @"quotifier", self.speaker, self.text, self.witnesses, self.time, nil];
+    NSArray *objects = [NSArray arrayWithObjects: @"quotifier", self.speaker, self.text, @"witness1, witness2", self.time, nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 
