@@ -70,6 +70,7 @@
 		ADAEF61A1367D0B3002F94A1 /* Changes.markdown in Resources */ = {isa = PBXBuildFile; fileRef = ADAEF5161367D0B3002F94A1 /* Changes.markdown */; };
 		ADAEF6231367D38F002F94A1 /* Comm.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF6221367D38F002F94A1 /* Comm.m */; };
 		ADE1C3401396F10C00D28669 /* Quotify_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE1C33F1396F10C00D28669 /* Quotify_logo.png */; };
+		DD560CEE139AC8640047A926 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD560CED139AC8640047A926 /* MapKit.framework */; };
 		DDA57D69139827EA00498283 /* Quotify_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA57D68139827EA00498283 /* Quotify_logo_small.png */; };
 		DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD101813944B7300A40AF4 /* SuccessViewController.m */; };
 		DDBD101B13944B7400A40AF4 /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101913944B7300A40AF4 /* SuccessViewController.xib */; };
@@ -169,6 +170,7 @@
 		ADAEF6211367D38F002F94A1 /* Comm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comm.h; sourceTree = "<group>"; };
 		ADAEF6221367D38F002F94A1 /* Comm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comm.m; sourceTree = "<group>"; };
 		ADE1C33F1396F10C00D28669 /* Quotify_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quotify_logo.png; sourceTree = "<group>"; };
+		DD560CED139AC8640047A926 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDA57D68139827EA00498283 /* Quotify_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quotify_logo_small.png; sourceTree = "<group>"; };
 		DDBD101713944B7300A40AF4 /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
 		DDBD101813944B7300A40AF4 /* SuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessViewController.m; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD560CEE139AC8640047A926 /* MapKit.framework in Frameworks */,
 				AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */,
 				ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */,
 				ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */,
@@ -229,6 +232,7 @@
 		ADAEF3831361E9A4002F94A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD560CED139AC8640047A926 /* MapKit.framework */,
 				AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */,
 				ADAEF3841361E9A4002F94A1 /* UIKit.framework */,
 				ADAEF3861361E9A4002F94A1 /* Foundation.framework */,

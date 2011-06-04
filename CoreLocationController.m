@@ -10,7 +10,7 @@
 
 @implementation CoreLocationController
 
-@synthesize locMgr, delegate;
+@synthesize locMgr, delegate, revGeoc;
 
 // Create a new instance of CLLocationManager and set delegate as self
 - (id)init {
@@ -26,7 +26,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	if([self.delegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-		[self.delegate locationUpdate:newLocation];
+        revGeoc = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
+        revGeoc.delegate = self;
+        [revGeoc start];
+        //[self.delegate locationUpdate:revGeoc];
 	}
 }
 
@@ -36,9 +39,18 @@
 	}
 }
 
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
+    [self.delegate locationUpdate:placemark];
+}
+
+-(void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
+    [self.delegate locationError:error];
+}
+
 // Clean up locMgr
 - (void)dealloc {
 	[self.locMgr release];
+    //[self.revGeoc release];
 	[super dealloc];
 }
 

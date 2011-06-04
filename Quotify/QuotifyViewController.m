@@ -112,8 +112,8 @@
     
 }
 
-- (void)locationUpdate:(CLLocation *)location {
-	locLabel.text = [location description];
+- (void)locationUpdate:(MKPlacemark *)location {
+	locLabel.text = [@"" stringByAppendingFormat:@"%@, %@",location.thoroughfare, location.locality];
 }
 
 - (void)locationError:(NSError *)error {

@@ -8,21 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 
 @protocol CoreLocationControllerDelegate 
 @required
-- (void)locationUpdate:(CLLocation *)location; // Our location updates are sent here
+- (void)locationUpdate:(MKPlacemark *)location; // Our location updates are sent here
 - (void)locationError:(NSError *)error; // Any errors are sent here
 @end
 
-@interface CoreLocationController : NSObject <CLLocationManagerDelegate> {
+@interface CoreLocationController : NSObject <CLLocationManagerDelegate, MKReverseGeocoderDelegate> {
     CLLocationManager *locMgr;
     id delegate;
+    MKReverseGeocoder *revGeoc;
     
 }
 
 @property (nonatomic, retain) CLLocationManager *locMgr;
 @property (nonatomic, assign) id delegate;
+@property (nonatomic, retain) MKReverseGeocoder *revGeoc;
 
 @end
