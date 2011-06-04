@@ -55,7 +55,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
 @property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
-@property (nonatomic, retain) CoreLocationController *CLController;
+//@property (nonatomic, retain) CoreLocationController *CLController;
 
 
 - (IBAction)quotifyPressed:(id)sender;
