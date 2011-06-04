@@ -16,6 +16,8 @@
 		AD6209D413908B9F0026C796 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D313908B9F0026C796 /* topBar.png */; };
 		AD6209D613908DEF0026C796 /* app_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D513908DEF0026C796 /* app_bg.png */; };
 		AD6209D8139092220026C796 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = AD6209D7139092220026C796 /* addButton.png */; };
+		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
+		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
 		ADA265101396ACAD00F9155C /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADA2650F1396ACAD00F9155C /* Entitlements.plist */; };
 		ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
 		ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3861361E9A4002F94A1 /* Foundation.framework */; };
@@ -95,6 +97,9 @@
 		AD6209D313908B9F0026C796 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		AD6209D513908DEF0026C796 /* app_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_bg.png; sourceTree = "<group>"; };
 		AD6209D7139092220026C796 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
+		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
+		AD7CECFB139A934A003A0A37 /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreLocationController.m; path = ../CoreLocationController.m; sourceTree = "<group>"; };
 		ADA2650F1396ACAD00F9155C /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ADAEF3801361E9A4002F94A1 /* Quotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAEF3841361E9A4002F94A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -177,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */,
 				ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */,
 				ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */,
 				ADAEF3891361E9A4002F94A1 /* CoreGraphics.framework in Frameworks */,
@@ -223,6 +229,7 @@
 		ADAEF3831361E9A4002F94A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */,
 				ADAEF3841361E9A4002F94A1 /* UIKit.framework */,
 				ADAEF3861361E9A4002F94A1 /* Foundation.framework */,
 				ADAEF3881361E9A4002F94A1 /* CoreGraphics.framework */,
@@ -239,6 +246,8 @@
 				ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */,
 				DDBD101713944B7300A40AF4 /* SuccessViewController.h */,
 				DDBD101813944B7300A40AF4 /* SuccessViewController.m */,
+				AD7CECFA139A934A003A0A37 /* CoreLocationController.h */,
+				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
 				ADAEF3C11361EAB2002F94A1 /* Model */,
 				ADAEF38B1361E9A4002F94A1 /* Supporting Files */,
 			);
@@ -576,6 +585,7 @@
 				ADAEF6191367D0B3002F94A1 /* SBJsonWriter.m in Sources */,
 				ADAEF6231367D38F002F94A1 /* Comm.m in Sources */,
 				DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */,
+				AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,12 +667,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
 				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -733,8 +745,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Max Rosenblatt (C2A737S7H3)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Max Rosenblatt (C2A737S7H3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -742,8 +754,7 @@
 				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
 				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C7D7FBC7-F08A-44BB-943A-304AB742D37C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C7D7FBC7-F08A-44BB-943A-304AB742D37C";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -753,11 +764,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";
 				INFOPLIST_FILE = "Quotify/Quotify-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

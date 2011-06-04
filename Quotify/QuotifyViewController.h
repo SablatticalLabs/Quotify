@@ -11,11 +11,13 @@
 #import "Quote.h"
 #import "Comm.h"
 #import "SuccessViewController.h"
+#import "CoreLocationController.h"
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate> {
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
+    CoreLocationController *CLController;
     UITextField *speaker;
     UITextField *witnesses;
     UIImageView *imageBox;
@@ -34,9 +36,11 @@
     UIActivityIndicatorView *quotifyingActivityIndicator;
     BOOL quoteTextWasEdited;
     UIView *settingsView;
+    UILabel *locLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *settingsView;
+@property (nonatomic, retain) IBOutlet UILabel *locLabel;
 @property (nonatomic, retain) IBOutlet UITextView *quoteText;
 @property (nonatomic, retain) IBOutlet UITextField *speaker;
 @property (nonatomic, retain) IBOutlet UITextField *witnesses;
@@ -51,6 +55,8 @@
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
 @property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
+@property (nonatomic, retain) CoreLocationController *CLController;
+
 
 - (IBAction)quotifyPressed:(id)sender;
 - (IBAction)imageBoxPressed:(id)sender;

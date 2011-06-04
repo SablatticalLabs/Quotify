@@ -12,6 +12,7 @@
 @implementation QuotifyViewController
 
 @synthesize settingsView;
+@synthesize locLabel;
 @synthesize quoteText;
 @synthesize speaker;
 @synthesize witnesses;
@@ -34,6 +35,7 @@
     [witnesses release];
     [imageBox release];
     [quotifyButton release];
+    [CLController release];
     //save (if necessary) and release currentQuote
     [myComm release];
     [imageBoxPressed release];
@@ -48,6 +50,7 @@
     [quotifier release];
     [successViewController release];
     [quotifyingActivityIndicator release];
+    [locLabel release];
     [super dealloc];
 }
 
@@ -77,6 +80,10 @@
     myComm.delegate = self;
     
     //get location and tag
+    CLController = [[CoreLocationController alloc] init];
+	CLController.delegate = self;
+	[CLController.locMgr startUpdatingLocation];
+    
     
     self.imgPicker = [[UIImagePickerController alloc] init];
 	self.imgPicker.allowsEditing = YES;
@@ -104,6 +111,15 @@
     }
     
 }
+
+- (void)locationUpdate:(CLLocation *)location {
+	locLabel.text = [location description];
+}
+
+- (void)locationError:(NSError *)error {
+	locLabel.text = [error description];
+}
+
 
 - (void)showFirstTimeSettings{
     [self presentModalViewController:self.settingsViewController animated:YES];
@@ -135,6 +151,7 @@
     [self setQuotifier:nil];
     [self setSuccessViewController:nil];
     [self setQuotifyingActivityIndicator:nil];
+    [self setLocLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
