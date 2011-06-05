@@ -106,7 +106,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     currentQuote.quotifier = [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"];
     self.quotifier.text = currentQuote.quotifier;
-    if ([currentQuote.quotifier rangeOfString:@"@"].location == NSNotFound) {
+    if (currentQuote.quotifier == nil || [currentQuote.quotifier rangeOfString:@"@"].location == NSNotFound) {
         [self showFirstTimeSettings];
     }
     
