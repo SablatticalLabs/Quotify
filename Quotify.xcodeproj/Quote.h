@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 
 @interface Quote : NSObject {
@@ -18,13 +19,14 @@
     NSString *postID;
     NSString *UrlWhereQuoteIsPosted;
     NSDictionary *witnesses;
-    UIImage *image;    
-               
+    UIImage *image; 
+    MKPlacemark *location;
 }
 
 @property (retain) NSString *quotifier, *speaker, *text, *time, *postID, *UrlWhereQuoteIsPosted;
 @property (retain) NSDictionary *witnesses;
 @property (retain) UIImage *image;
+@property (retain) MKPlacemark *location;
 
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;

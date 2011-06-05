@@ -17,7 +17,7 @@
 @synthesize speaker;
 @synthesize witnesses;
 @synthesize time;
-@synthesize location;
+@synthesize locationLabel;
 @synthesize newQuoteButton;
 @synthesize quote;
 
@@ -53,6 +53,7 @@
     self.witnesses.text = @"work, in, progress"; //theQuote.witnesses;
     self.imageBox.image = theQuote.image;
     self.time.text = theQuote.time;
+    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@",theQuote.location.thoroughfare, theQuote.location.locality];
     //self.location = theQuote.location;
     
 }
@@ -64,7 +65,7 @@
     [speaker release];
     [witnesses release];
     [time release];
-    [location release];
+    [locationLabel release];
     [newQuoteButton release];
     [quote release];
     [super dealloc];
@@ -95,7 +96,7 @@
     [self setSpeaker:nil];
     [self setWitnesses:nil];
     [self setTime:nil];
-    [self setLocation:nil];
+    [self setLocationLabel:nil];
     [self setNewQuoteButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.

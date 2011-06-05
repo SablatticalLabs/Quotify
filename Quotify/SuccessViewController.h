@@ -17,7 +17,7 @@
     UILabel *speaker;
     UILabel *witnesses;
     UILabel *time;
-    UILabel *location;
+    UILabel *locationLabel;
     UIButton *newQuoteButton;
     Quote *quote;
 }
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *speaker;
 @property (nonatomic, retain) IBOutlet UILabel *witnesses;
 @property (nonatomic, retain) IBOutlet UILabel *time;
-@property (nonatomic, retain) IBOutlet UILabel *location;
+@property (nonatomic, retain) IBOutlet UILabel *locationLabel;
 @property (nonatomic, retain) IBOutlet UIButton *newQuoteButton;
 @property (nonatomic, retain) Quote *quote;
 

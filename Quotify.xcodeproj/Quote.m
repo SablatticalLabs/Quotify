@@ -12,7 +12,7 @@
 
 @implementation Quote
 
-@synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted;
+@synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted, location;
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{

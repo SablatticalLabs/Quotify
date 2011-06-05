@@ -113,7 +113,8 @@
 }
 
 - (void)locationUpdate:(MKPlacemark *)location {
-	locLabel.text = [@"" stringByAppendingFormat:@"%@, %@",location.thoroughfare, location.locality];
+	currentQuote.location = location;
+    locLabel.text = [NSString stringWithFormat:@"%@, %@",location.thoroughfare, location.locality];
 }
 
 - (void)locationError:(NSError *)error {
