@@ -27,6 +27,7 @@
 @synthesize quotifier;
 @synthesize successViewController;
 @synthesize quotifyingActivityIndicator;
+@synthesize locationController;
 
 - (void)dealloc
 {
@@ -35,7 +36,7 @@
     [witnesses release];
     [imageBox release];
     [quotifyButton release];
-    [CLController release];
+    [locationController release];
     //save (if necessary) and release currentQuote
     [myComm release];
     [imageBoxPressed release];
@@ -80,9 +81,9 @@
     myComm.delegate = self;
     
     //get location and tag
-    CLController = [[CoreLocationController alloc] init];
-	CLController.delegate = self;
-	[CLController.locMgr startUpdatingLocation];
+    locationController = [[CoreLocationController alloc] init];
+	locationController.delegate = self;
+	[locationController.locMgr startUpdatingLocation];
     
     
     self.imgPicker = [[UIImagePickerController alloc] init];
@@ -99,8 +100,6 @@
     
     [self registerForKeyboardNotifications];
     quoteTextWasEdited = NO;
-    
-    //[self viewDidAppear:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -109,11 +108,11 @@
     if (currentQuote.quotifier == nil || [currentQuote.quotifier rangeOfString:@"@"].location == NSNotFound) {
         [self showFirstTimeSettings];
     }
-    
 }
 
 - (void)locationUpdate:(MKPlacemark *)location {
-	currentQuote.location = location;
+	//NSLog(@"coordinate: %@", location.coordinate);
+    currentQuote.location = location;
     locLabel.text = [NSString stringWithFormat:@"%@, %@",location.thoroughfare, location.locality];
 }
 
@@ -166,7 +165,8 @@
 
 // Triggered once the user has chosen a picture
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)pickedImage editingInfo:(NSDictionary *)editInfo {
-	currentQuote.image = pickedImage;	
+    if(pickedImage != nil)
+        currentQuote.image = pickedImage;	
 	[[picker parentViewController] dismissModalViewControllerAnimated:YES];
     //release imgPicker if necessary
     
@@ -200,6 +200,8 @@
 }
 
 - (IBAction)quotifyPressed:(id)sender {
+    //[locationController.locMgr stopUpdatingLocation];
+    
     if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)//quoteText was edited 
        && !([quoteText.text isEqualToString:@""]) && !([speaker.text isEqualToString:@""]))//quoteText and speaker are not blank
     {
@@ -221,7 +223,7 @@
 - (IBAction)imageBoxPressed:(id)sender {
     if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
 	{	
-    UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil];
+    UIActionSheet *pictureSourceActionSheet = [[[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil] autorelease];
     pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }
@@ -302,7 +304,7 @@
 
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage
 {
-    UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [failureAlert show];
     [failureAlert release];
 }
