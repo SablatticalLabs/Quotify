@@ -12,6 +12,7 @@
 #import "Comm.h"
 #import "SuccessViewController.h"
 #import "CoreLocationController.h"
+#import "FBConnect.h"
 
 @interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate> {
     

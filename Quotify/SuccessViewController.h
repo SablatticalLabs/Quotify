@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Quote.h"
+#import "FBConnect.h"
+
 
 
 @interface SuccessViewController : UIViewController {

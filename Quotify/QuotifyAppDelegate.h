@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
 
 @class QuotifyViewController;
 
 @interface QuotifyAppDelegate : NSObject <UIApplicationDelegate> {
-
+    Facebook *facebook;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+
+@property (nonatomic, retain) Facebook *facebook;
 
 @property (nonatomic, retain) IBOutlet QuotifyViewController *viewController;
 
