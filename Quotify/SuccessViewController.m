@@ -8,7 +8,6 @@
 
 #import "SuccessViewController.h"
 #import "QuotifyViewController.h"
-//#import "Quote.h"
 
 
 @implementation SuccessViewController
@@ -49,7 +48,7 @@
 -(void)displayQuote:(Quote *)theQuote
 {
     self.quoteView.text = theQuote.text;
-    self.speaker.text = theQuote.speaker;
+    self.speaker.text = [NSString stringWithFormat:@"- %@",theQuote.speaker];
     self.witnesses.text = @"work, in, progress"; //theQuote.witnesses;
     self.imageBox.image = theQuote.image;
     self.time.text = theQuote.time;

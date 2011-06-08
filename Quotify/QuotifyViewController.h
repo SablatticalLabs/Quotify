@@ -17,7 +17,7 @@
     
     Quote *currentQuote;
     Comm *myComm;
-    CoreLocationController *CLController;
+    CoreLocationController *locationController;
     UITextField *speaker;
     UITextField *witnesses;
     UIImageView *imageBox;
@@ -55,7 +55,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
 @property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
-//@property (nonatomic, retain) CoreLocationController *CLController;
+@property (nonatomic, retain) CoreLocationController *locationController;
 
 
 - (IBAction)quotifyPressed:(id)sender;
