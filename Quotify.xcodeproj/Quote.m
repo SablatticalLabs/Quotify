@@ -10,6 +10,7 @@
 #import "JSON.h"
 
 
+
 @implementation Quote
 
 @synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted, location;

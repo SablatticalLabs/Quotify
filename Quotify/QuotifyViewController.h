@@ -14,6 +14,7 @@
 #import "CoreLocationController.h"
 #import "FBConnect.h"
 
+
 @interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate> {
     
     Quote *currentQuote;
