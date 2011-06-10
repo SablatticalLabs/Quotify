@@ -1,4 +1,3 @@
-//  Can you see this?!?!
 //
 //  QuotifyViewController.m
 //  Quotify
@@ -11,6 +10,7 @@
 
 @implementation QuotifyViewController
 
+@synthesize fbButton;
 @synthesize settingsView;
 @synthesize locLabel;
 @synthesize quoteText;
@@ -28,9 +28,9 @@
 @synthesize successViewController;
 @synthesize quotifyingActivityIndicator;
 @synthesize locationController;
+@synthesize facebook;
 
-- (void)dealloc
-{
+- (void)dealloc{
     [quoteText release];
     [speaker release];
     [witnesses release];
@@ -52,11 +52,11 @@
     [successViewController release];
     [quotifyingActivityIndicator release];
     [locLabel release];
+    [fbButton release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
@@ -65,16 +65,18 @@
 
 #pragma mark - View lifecycle
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
+    /********** UI Fixes ***********/
     ((UIScrollView *)self.view).contentSize=CGSizeMake(320, self.view.frame.size.height);
     
     quoteText.clipsToBounds = YES;
     quoteText.layer.cornerRadius = 10.0f;
+    
+    [fbButton updateImage];
+    /*******************************/
     
     currentQuote = [[Quote alloc] init];
     myComm = [[Comm alloc] init];
@@ -100,15 +102,47 @@
     
     [self registerForKeyboardNotifications];
     quoteTextWasEdited = NO;
+    
+    /******************* FB ********************/
+    facebook= [[Facebook alloc] initWithAppId:@"232642113419626"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"] 
+        && [defaults objectForKey:@"FBExpirationDateKey"]) {
+        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    }
+    
+    if (![facebook isSessionValid]) {
+        NSArray* permissions =  [[NSArray arrayWithObjects:
+                                  @"email", @"user_checkins", nil] retain];
+        [facebook authorize:permissions delegate:self];
+    }
+    /*******************************************/
+    
 }
 
--(void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     currentQuote.quotifier = [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"];
     self.quotifier.text = currentQuote.quotifier;
     if (currentQuote.quotifier == nil || [currentQuote.quotifier rangeOfString:@"@"].location == NSNotFound) {
         [self showFirstTimeSettings];
     }
 }
+
+- (void)fbDidLogin{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
+    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+    
+    //get information about the currently logged in user
+    [facebook requestWithGraphPath:@"me/email" andDelegate:self];
+    
+    //get the logged-in user's friends
+    //[facebook requestWithGraphPath:@"me/friends" andDelegate:self.viewController];  
+}
+
 
 - (void)locationUpdate:(MKPlacemark *)location {
 	//NSLog(@"coordinate: %@", location.coordinate);
@@ -120,14 +154,30 @@
 	locLabel.text = [error description];
 }
 
-
 - (void)showFirstTimeSettings{
     [self presentModalViewController:self.settingsViewController animated:YES];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started."];
 }
 
-- (void)viewDidUnload
-{
+- (IBAction)fbButtonClicked:(id)sender {
+    if (fbButton.isLoggedIn) {
+        [self fbLogout];
+    } else {
+        [self fbLogin];
+    }
+}
+
+- (void)fbLogin {
+    [facebook authorize:nil delegate:self];
+}
+
+- (void)fbLogout {
+    [facebook logout:self];
+}
+
+
+
+- (void)viewDidUnload{
     [currentQuote release];
     [myComm release];
     [quoteText release];
@@ -152,6 +202,7 @@
     [self setSuccessViewController:nil];
     [self setQuotifyingActivityIndicator:nil];
     [self setLocLabel:nil];
+    [self setFbButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -161,7 +212,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 // Triggered once the user has chosen a picture
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)pickedImage editingInfo:(NSDictionary *)editInfo {
@@ -233,7 +283,7 @@
     }
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Take Picture"]) {
         imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentModalViewController:self.imgPicker animated:YES];
@@ -244,7 +294,7 @@
     }
 }
 
--(IBAction)settingsPressed:(id)sender {
+- (IBAction)settingsPressed:(id)sender {
     [self presentModalViewController:self.settingsViewController animated:YES];
 }
 
@@ -292,25 +342,21 @@
 	return NO; // We do not want UITextField to insert line-breaks.
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
     activeField = textField;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
+- (void)textFieldDidEndEditing:(UITextField *)textField{
     activeField = nil;
 }
 
-- (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage
-{
+- (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage{
     UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [failureAlert show];
     [failureAlert release];
 }
 
-- (void)setupNewQuote
-{
+- (void)setupNewQuote{
     [currentQuote release];
     currentQuote = [[Quote alloc] init];
     quoteText.text = @"What was said?";
@@ -320,9 +366,7 @@
     imageBox.image = nil;
 }
 
-
-- (void)registerForKeyboardNotifications
-{
+- (void)registerForKeyboardNotifications{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
@@ -334,8 +378,7 @@
 }
 
 // Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
+- (void)keyboardWasShown:(NSNotification*)aNotification{
     if(((UIView*)self.quoteText).isFirstResponder){
         if (!quoteTextWasEdited) {
             quoteText.text = @"";
@@ -364,8 +407,7 @@
 }
 
 // Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification{
     if (quoteTextWasEdited) {
         [currentQuote timestamp];
         self.timestampLabel.text = currentQuote.time;
@@ -373,6 +415,10 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     ((UIScrollView *)self.view).contentInset = contentInsets;
     ((UIScrollView *)self.view).scrollIndicatorInsets = contentInsets;
+}
+
+- (void)request:(FBRequest *)request didLoad:(id)result{
+    NSLog(@"fb_email: %@", [result description]);
 }
 
 @end

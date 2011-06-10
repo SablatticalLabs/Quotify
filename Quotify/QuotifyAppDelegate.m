@@ -14,8 +14,6 @@
 
 @synthesize window=_window;
 @synthesize viewController=_viewController;
-@synthesize facebook;
-
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -25,16 +23,12 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
-    facebook= [[Facebook alloc] initWithAppId:@"232642113419626"];
-    
-    [facebook authorize:nil delegate:self]; // Set delegate to object we wish to receive callbacks
-    
-    return YES;
+        return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    return [facebook handleOpenURL:url]; 
+    return [self.viewController.facebook handleOpenURL:url]; 
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
