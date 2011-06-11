@@ -35,7 +35,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb232642113419626://</string>
+				<string>fb232642113419626</string>
 			</array>
 		</dict>
 	</array>

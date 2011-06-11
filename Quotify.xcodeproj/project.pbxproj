@@ -48,6 +48,8 @@
 		ADF0F9F113A15C63000AC8FC /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E113A15C63000AC8FC /* SBJsonBase.m */; };
 		ADF0F9F213A15C63000AC8FC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E313A15C63000AC8FC /* SBJsonParser.m */; };
 		ADF0F9F313A15C63000AC8FC /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E513A15C63000AC8FC /* SBJsonWriter.m */; };
+		DD09DCA013A2980C007A0786 /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD09DC9D13A2980B007A0786 /* FBConnect.bundle */; };
+		DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09DC9F13A2980B007A0786 /* FBLoginButton.m */; };
 		DD560CEE139AC8640047A926 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD560CED139AC8640047A926 /* MapKit.framework */; };
 		DDA57D69139827EA00498283 /* Quotify_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA57D68139827EA00498283 /* Quotify_logo_small.png */; };
 		DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD101813944B7300A40AF4 /* SuccessViewController.m */; };
@@ -129,6 +131,9 @@
 		ADF0F9E313A15C63000AC8FC /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		ADF0F9E413A15C63000AC8FC /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		ADF0F9E513A15C63000AC8FC /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		DD09DC9D13A2980B007A0786 /* FBConnect.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBConnect.bundle; sourceTree = "<group>"; };
+		DD09DC9E13A2980B007A0786 /* FBLoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginButton.h; sourceTree = "<group>"; };
+		DD09DC9F13A2980B007A0786 /* FBLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginButton.m; sourceTree = "<group>"; };
 		DD560CED139AC8640047A926 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDA57D68139827EA00498283 /* Quotify_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Quotify_logo_small.png; sourceTree = "<group>"; };
 		DDBD101713944B7300A40AF4 /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
@@ -286,6 +291,9 @@
 			children = (
 				ADF0F9CD13A15C63000AC8FC /* Facebook.h */,
 				ADF0F9CE13A15C63000AC8FC /* Facebook.m */,
+				DD09DC9D13A2980B007A0786 /* FBConnect.bundle */,
+				DD09DC9E13A2980B007A0786 /* FBLoginButton.h */,
+				DD09DC9F13A2980B007A0786 /* FBLoginButton.m */,
 				ADF0F9CF13A15C63000AC8FC /* facebook_ios_sdk_Prefix.pch */,
 				ADF0F9D013A15C63000AC8FC /* FBConnect.h */,
 				ADF0F9D113A15C63000AC8FC /* FBDialog.bundle */,
@@ -407,6 +415,7 @@
 				ADE1C3401396F10C00D28669 /* Quotify_logo.png in Resources */,
 				DDA57D69139827EA00498283 /* Quotify_logo_small.png in Resources */,
 				ADF0F9EA13A15C63000AC8FC /* FBDialog.bundle in Resources */,
+				DD09DCA013A2980C007A0786 /* FBConnect.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +468,7 @@
 				ADF0F9F113A15C63000AC8FC /* SBJsonBase.m in Sources */,
 				ADF0F9F213A15C63000AC8FC /* SBJsonParser.m in Sources */,
 				ADF0F9F313A15C63000AC8FC /* SBJsonWriter.m in Sources */,
+				DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

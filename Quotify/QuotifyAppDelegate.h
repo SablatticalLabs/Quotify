@@ -11,13 +11,10 @@
 
 @class QuotifyViewController;
 
-@interface QuotifyAppDelegate : NSObject <UIApplicationDelegate> {
-    Facebook *facebook;
+@interface QuotifyAppDelegate : NSObject <UIApplicationDelegate, FBSessionDelegate> {
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
-@property (nonatomic, retain) Facebook *facebook;
 
 @property (nonatomic, retain) IBOutlet QuotifyViewController *viewController;
 

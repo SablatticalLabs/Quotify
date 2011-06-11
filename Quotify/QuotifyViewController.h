@@ -13,9 +13,10 @@
 #import "SuccessViewController.h"
 #import "CoreLocationController.h"
 #import "FBConnect.h"
+#import "FBLoginButton.h"
 
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate> {
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
@@ -39,7 +40,12 @@
     BOOL quoteTextWasEdited;
     UIView *settingsView;
     UILabel *locLabel;
+    FBLoginButton *fbButton;
+    Facebook *facebook;
 }
+
+@property (nonatomic, retain) IBOutlet FBLoginButton *fbButton;
+@property (nonatomic, retain) Facebook *facebook;
 
 @property (nonatomic, retain) IBOutlet UIView *settingsView;
 @property (nonatomic, retain) IBOutlet UILabel *locLabel;
@@ -66,11 +72,16 @@
 - (IBAction)settingsPressed:(id)sender;
 - (IBAction)backToQuoteEntry:(id)sender;
 - (IBAction)emailEditingEnded:(id)sender;
+- (IBAction)fbButtonClicked:(id)sender;
+
 - (void)registerForKeyboardNotifications;
 - (void)showSuccessView;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
 - (void)setupNewQuote;
 - (void)showFirstTimeSettings;
+- (void)fbLogin;
+- (void)fbLogout;
+
 
 
 @end
