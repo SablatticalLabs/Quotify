@@ -56,6 +56,14 @@
 /**
  * To be called whenever the login status is changed
  */
+
+
+//Added this to make image automagically update when you set login status - L.S.
+-(void)setIsLoggedIn:(BOOL)isLoggedIn{
+    _isLoggedIn = isLoggedIn;
+    [self updateImage];
+}
+
 - (void)updateImage {
   self.imageView.image = [self buttonImage];
   [self setImage: [self buttonImage]
