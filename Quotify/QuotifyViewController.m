@@ -78,9 +78,10 @@
         facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
         facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
     }
-    
-    fbButton.isLoggedIn = [facebook isSessionValid];
-
+    if ([facebook isSessionValid]) {
+        [facebook requestWithGraphPath:@"me" andDelegate:self];
+        fbButton.isLoggedIn = YES;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -180,7 +181,7 @@
 	locLabel.text = @"Could Not Determine Location";//[error description];
 }
 
-/********************************************       ********************************************************/
+/******************************************** No Name Yet ********************************************************/
 
 
 - (IBAction)imageBoxPressed:(id)sender {
@@ -319,7 +320,9 @@
 }
 
 - (void)fbLogin {
-    [facebook authorize:nil delegate:self];
+    NSArray * permissions =  [NSArray arrayWithObjects:
+                                @"user_checkins", @"email", @"offline_access",nil];
+    [facebook authorize:permissions delegate:self];
 }
 
 - (void)fbLogout {
@@ -327,7 +330,16 @@
 }
 
 - (void)request:(FBRequest *)request didLoad:(id)result{
+    //Currently this method is custom tailored to handle the "me" request and get the email
+    //This should be changed to handle all fb requests i.e. get friends list etc...
     NSLog(@"fb_email: %@", [result description]);
+    NSDictionary * fbUserInfoDict = result;
+    self.quotifier.text = [fbUserInfoDict objectForKey:@"email"];
+    [self emailEditingEnded:nil];
+}
+
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error{
+    NSLog(@"fb_error: %@", [error description]);
 }
 
 - (void)fbDidLogin{
@@ -338,10 +350,10 @@
     fbButton.isLoggedIn = YES;
     
     //get information about the currently logged in user
-    [facebook requestWithGraphPath:@"me/email" andDelegate:self];
+    [facebook requestWithGraphPath:@"me" andDelegate:self];
     
     //get the logged-in user's friends
-    //[facebook requestWithGraphPath:@"me/friends" andDelegate:self.viewController];  
+    //[facebook requestWithGraphPath:@"me/friends" andDelegate:self];  
 }
 
 - (void)fbDidLogout{
@@ -378,8 +390,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     activeField = nil;
 }
-
-
 
 - (void)registerForKeyboardNotifications{
     [[NSNotificationCenter defaultCenter] addObserver:self
