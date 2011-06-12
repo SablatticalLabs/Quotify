@@ -216,6 +216,10 @@
     //release imgPicker if necessary
     
     imageBox.image = currentQuote.image;
+    
+    // Hide the keyboard after the user has chosen a picture
+    [self hideKeyboard:nil];
+    
 }
 
 - (IBAction)quotifyPressed:(id)sender {
@@ -300,6 +304,8 @@
     quoteTextWasEdited = NO;
     speaker.text = @"";
     imageBox.image = nil;
+    [self hideKeyboard:nil];
+
 }
 
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage{
